@@ -1,0 +1,1 @@
+{"silhouette_score": 0.3498114063487135, "membersGroup": {"Group5": 15, "Group4": 14, "Group7": 20, "Group6": 20, "Group1": 26, "Group0": 24, "Group3": 17, "Group2": 7, "Group8": 7}, "Params": {"Default": "Default"}, "calinski_harabaz_score": 163.9874063603125, "algorithm": "Affinity Propagation", "responseExec": "OK"}

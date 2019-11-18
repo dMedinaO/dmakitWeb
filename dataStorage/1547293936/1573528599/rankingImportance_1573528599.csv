@@ -1,0 +1,6 @@
+feature,importance
+petal.width,0.428
+petal.length,0.382
+eval,0.113
+sepal.length,0.05
+sepal.width,0.027
