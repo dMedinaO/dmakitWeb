@@ -24,8 +24,6 @@
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
-    <!--Demo [ DEMONSTRATION ]-->
-    <link href="../css/demo/nifty-demo.min.css" rel="stylesheet">
 
     <!--DataTables [ OPTIONAL ]-->
     <link href="../plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
@@ -52,10 +50,6 @@
 
 
     <!--=================================================-->
-
-    <!--Demo script [ DEMONSTRATION ]-->
-    <script src="../js/demo/nifty-demo.min.js"></script>
-
 
     <!--DataTables [ OPTIONAL ]-->
     <script src="../plugins/datatables/media/js/jquery.dataTables.js"></script>
@@ -166,7 +160,7 @@
                     <!--Page Title-->
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <div id="page-title">
-                        <h1 class="page-header text-overflow">Registered Countries in smartTraining System</h1>
+                        <h1 class="page-header text-overflow">Registered Countries in DMAKit System</h1>
 
                     </div>
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -320,7 +314,7 @@
             <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-<p class="pad-lft">&#0169; 2018 Desarrollado por SmartTraining Group, PESB2 Group, DIQBT, FCFM, Universidad de Chile</p>
+<p class="pad-lft">&#0169; 2018 Desarrollado por DMAKit Group, PESB2 Group, DIQBT, FCFM, Universidad de Chile</p>
 
 
         </footer>
@@ -440,4 +434,70 @@
 			</form>
 		</div>
 </body>
+
+<!-- modal para eliminar -->
+<div>
+  <form id="frmEliminar" action="" method="POST">
+    <input type="hidden" id="idcountry" name="idcountry" value="">
+    <!-- Modal -->
+    <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modalEliminarLabel">Remove Country</h4>
+          </div>
+          <div class="modal-body">
+            Are you sure remove country? All institutions associated with country will be remove<strong data-name=""></strong>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="eliminar-country" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+  </form>
+</div>
+
+<!-- modal para editar un nuevo elemento -->
+<div>
+ <form id="frmEditar" action="" method="POST" data-parsley-validate class="form-horizontal form-label-left">
+   <input type="hidden" id="idcountry" name="idcountry" value="">
+   <div class="modal fade" id="myModalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabelEdit" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             <h4 class="modal-title" id="myModalLabelEdit">Editing selected country</h4>
+           </div>
+           <div class="modal-body">
+
+
+             <div class="form-group">
+               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name's country<span class="required">*</span>
+               </label>
+
+               <div class="col-md-9 col-sm-9 col-xs-12">
+                 <input type="text" id="name" required="required" class="form-control col-md-7 col-xs-12" placeholder="Ingrese nombre de administrador">
+               </div>
+             </div>
+
+             <div class="ln_solid"></div>
+             <div class="form-group">
+               <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                 <button type="reset" class="btn btn-primary">Reset</button>
+                 <button type="button" id="editar-country" class="btn btn-success" data-dismiss="modal">Edit</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+               </div>
+             </div>
+
+           </div>
+
+         </div>
+       </div>
+     </form>
+   </div>
+</div>
 </html>

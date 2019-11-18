@@ -166,7 +166,7 @@
                     <!--Page Title-->
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <div id="page-title">
-                        <h1 class="page-header text-overflow">Registered Institution in SmartTraining System</h1>
+                        <h1 class="page-header text-overflow">Registered Institution in DMAKit System</h1>
 
                     </div>
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -192,6 +192,7 @@
                                     <th class="min-tablet">country</th>
                                     <th class="min-tablet">Created</th>
                                     <th class="min-tablet">Modified</th>
+                                    <th class="min-tablet">Options</th>
                                   </tr>
                                 </thead>
                             </table>
@@ -319,7 +320,7 @@
             <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-<p class="pad-lft">&#0169; 2018 Desarrollado por SmartTraining Group, PESB2 Group, DIQBT, FCFM, Universidad de Chile</p>
+<p class="pad-lft">&#0169; 2018 Desarrollado por DMAKit Group, PESB2 Group, DIQBT, FCFM, Universidad de Chile</p>
 
 
         </footer>
@@ -438,25 +439,26 @@
 				</div>
 			</form>
 		</div>
+</body>
 
-    <!-- modal para eliminar -->
+<!-- modal para eliminar -->
 <div>
   <form id="frmEliminar" action="" method="POST">
-    <input type="hidden" id="idlicitacion" name="idlicitacion" value="">
+    <input type="hidden" id="idinstitution" name="idinstitution" value="">
     <!-- Modal -->
     <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="modalEliminarLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="modalEliminarLabel">Eliminar Consulta RFI</h4>
+            <h4 class="modal-title" id="modalEliminarLabel">Remove Institution</h4>
           </div>
           <div class="modal-body">
-            ¿Está seguro de eliminar la consulta RFI seleccionada?<strong data-name=""></strong>
+            Are you sure remove institution?<strong data-name=""></strong>
           </div>
           <div class="modal-footer">
-            <button type="button" id="eliminar-usuario" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="button" id="eliminar-country" class="btn btn-primary" data-dismiss="modal">Ok</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
           </div>
         </div>
       </div>
@@ -467,47 +469,42 @@
 
 <!-- modal para editar un nuevo elemento -->
 <div>
-	<form id="frmEditar" action="" method="POST" data-parsley-validate class="form-horizontal form-label-left">
-		<input type="hidden" id="idlicitacion" name="idlicitacion" value="">
-		<div class="modal fade" id="myModalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabelEdit" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-							<h4 class="modal-title" id="myModalLabelEdit">Cambiar estado de Consulta RFI Seleccionada</h4>
-						</div>
-						<div class="modal-body">
+ <form id="frmEditar" action="" method="POST" data-parsley-validate class="form-horizontal form-label-left">
+   <input type="hidden" id="idinstitution" name="idinstitution" value="">
+   <div class="modal fade" id="myModalEditar" tabindex="-1" role="dialog" aria-labelledby="myModalLabelEdit" aria-hidden="true">
+       <div class="modal-dialog">
+         <div class="modal-content">
+           <div class="modal-header">
+             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+             <h4 class="modal-title" id="myModalLabelEdit">Editing selected institution</h4>
+           </div>
+           <div class="modal-body">
 
-              <div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="status">Seleccione Estado de la Consulta<span class="required">*</span>
-								</label>
 
-								<div class="col-md-9 col-sm-9 col-xs-12">
-								  <select id="status" class="form-control">
-                    <option>PUBLICADA</option>
-                    <option>PARTICIPACIÓN HECHA</option>
-                    <option>CANCELADA</option>
-  									<option>CERRADA</option>
-                    <option>OTROS</option>
-								  </select>
-								</div>
-						  </div>
+             <div class="form-group">
+               <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nameInstitution">Name's Institution<span class="required">*</span>
+               </label>
 
-						  <div class="ln_solid"></div>
-						  <div class="form-group">
-							<div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-								<button type="reset" class="btn btn-primary">Resetear</button>
-								<button type="button" id="editar-licitacion" class="btn btn-success" data-dismiss="modal">Editar</button>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-							</div>
-						  </div>
+               <div class="col-md-9 col-sm-9 col-xs-12">
+                 <input type="text" id="nameInstitution" required="required" class="form-control col-md-7 col-xs-12" placeholder="Ingrese nombre de administrador">
+               </div>
+             </div>
 
-						</div>
+             <div class="ln_solid"></div>
+             <div class="form-group">
+               <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                 <button type="reset" class="btn btn-primary">Reset</button>
+                 <button type="button" id="editar-country" class="btn btn-success" data-dismiss="modal">Edit</button>
+                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+               </div>
+             </div>
 
-					</div>
-				</div>
-		</div>
-		</form>
+           </div>
+
+         </div>
+       </div>
+     </form>
+   </div>
 </div>
-</body>
+
 </html>
