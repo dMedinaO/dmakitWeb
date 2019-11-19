@@ -17,7 +17,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Smart Training</title>
+    <title>Dashboard DMAKit</title>
 
     <!--STYLESHEET-->
     <!--=================================================-->
@@ -113,7 +113,7 @@
                     <a href="../" class="navbar-brand">
                         <img src="../img/logo.png" alt="Nifty Logo" class="brand-icon">
                         <div class="brand-title">
-                            <span class="brand-text">S. Training</span>
+                            <span class="brand-text">DMAKit</span>
                         </div>
                     </a>
                 </div>
@@ -507,7 +507,7 @@
             <!-- Remove the class "show-fixed" and "hide-fixed" to make the content always appears. -->
             <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
 
-            <p class="pad-lft">&#0169; 2019 Developed by <a href="http://pesb2.cl/smartTraining"> SmartTraining Group, </a>Centre for Biothecnology and Bioengineering, FCFM, University of Chile</p>
+            <p class="pad-lft">&#0169; 2019 Developed by <a href="http://pesb2.cl/dmakitWeb"> DMAKit Group, </a>Centre for Biothecnology and Bioengineering, CeBiB, FCFM, Universidad de Chile</p>
 
 
 
