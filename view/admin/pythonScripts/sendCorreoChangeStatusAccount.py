@@ -30,10 +30,10 @@ Connect.closeConnectionDB()
 msg= ""
 if statusUser == "ACCEPTED":
 
-    msg = 'Dear %s,\nIt is reported that your SmartTraining user account has been activated.\nBest Regards\nSmartTraining Team' % userName
+    msg = 'Dear %s,\nIt is reported that your DMAKit user account has been activated.\nBest Regards\nDMAKit Team' % userName
 
 else:
-    msg = 'Dear %s,\nWe inform you that your status has been updated in the SmartTraining user account, your current status is %s.<br>For more details consult the account manager.\nBest Regards\nSmartTraining Team' % (userName, statusUser)
+    msg = 'Dear %s,\nWe inform you that your status has been updated in the DMAKit user account, your current status is %s.<br>For more details consult the account manager.\nBest Regards\nDMAKit Team' % (userName, statusUser)
 
 #hacemos la instancia para enviar el email...
 mailSend = sendEmail.sendEmail('smarttrainingserviceteam@gmail.com', email, "Change status account", msg, 'smart123ewq')

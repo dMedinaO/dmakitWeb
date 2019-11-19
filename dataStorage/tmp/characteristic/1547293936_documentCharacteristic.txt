@@ -1,1 +1,0 @@
-normalesLog10.csv

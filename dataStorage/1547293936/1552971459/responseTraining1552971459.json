@@ -1,1 +1,0 @@
-{"errorExec": {"exec_algorithm": "ERROR", "confusionMatrix": "error", "curveLearning": "error"}, "classTransform": {"Poor": 0, "Average": 1, "Good": 2}, "Validation": "Cross Validation: 10", "Params": {"splitter": "best", "criterion": "gini"}, "algorithm": "DecisionTree"}

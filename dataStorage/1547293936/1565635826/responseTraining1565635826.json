@@ -1,1 +1,0 @@
-{"errorExec": {"exec_algorithm": "ERROR", "confusionMatrix": "error", "curveLearning": "error"}, "classTransform": {"yes": 0, "no": 1}, "Validation": "Cross Validation: 10", "Params": {"kernel": "rbf", "gamma": "0.001", "nu": "0.5", "degree": "3"}, "algorithm": "NuSVC"}

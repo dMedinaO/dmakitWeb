@@ -1,1 +1,0 @@
-{"silhouette_score": NaN, "membersGroup": {"Group5": 1, "Group4": 1, "Group7": 1, "Group6": 1, "Group1": 1, "Group0": 1070, "Group3": 1, "Group2": 1}, "Params": {"Number K": 8, "Affinity": "euclidean", "Linkage": "ward"}, "calinski_harabaz_score": 1.2507409800463241, "algorithm": "Agglomerative Clustering", "responseExec": "OK"}

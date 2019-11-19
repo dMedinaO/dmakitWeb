@@ -1,1 +1,0 @@
-{"errorExec": {"Process": "ERROR"}, "Params": {"kernel": "rbf", "gamma": "0.001", "degree": "3"}, "algorithm": "SVR"}
