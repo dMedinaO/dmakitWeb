@@ -23,6 +23,7 @@ $idUser = $_SESSION['idUser'];
 			$response['emailUser'] = $data['emailUser'];
 			$response['nameInstitution'] = $data['nameInstitution'];
 			$response['name'] = $data['name'];
+			$response['iduser'] = $data['iduser'];
 		}
 
 		echo json_encode($response);

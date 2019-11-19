@@ -247,8 +247,7 @@
 																			<i class="fa fa fa-globe icon-lg icon-fw"></i>
 																			<span class="menu-title country"></span>
 																		</li>
-																	</ul>
-
+																	</ul>																	
 																	<hr>
 															</div>
 															<div class="fluid">
@@ -537,4 +536,5 @@
 
 						<!-- modal section -->
 						</body>
-						</html>
+
+					</html>
