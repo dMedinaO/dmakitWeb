@@ -254,6 +254,21 @@
                             </div>
                           </div>
 
+													<div class="form-group">
+														<label class="control-label col-md-3 col-sm-3 col-xs-12" for="optionScale">Scale Option <span class="required">*</span>
+														</label>
+
+														<div class="col-md-5 col-sm-5 col-xs-12">
+															<select id="optionScale" class="form-control">
+																<option value="0">No apply scale</option>
+																<option value="1">Apply normal scale</option>
+																<option value="2">Apply Min Max scale</option>
+																<option value="3">Apply Log scale</option>
+																<option value="4">Apply Log Normal scale</option>
+															</select>
+														</div>
+													</div>
+
                           <div class="ln_solid"></div>
 
                           <div class="form-group">
