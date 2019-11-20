@@ -308,6 +308,24 @@
                   </div>
                 </div>
 
+								<div class="row">
+
+									<div class="col-sm-12 col-md-12 col-lg-12">
+
+										<div class="panel panel-bordered panel-primary">
+
+											<div class="panel-heading">
+												<h3 class="panel-title">Silhouette analysis for clustering on sample data</h3>
+											</div>
+											<div class="panel-body">
+												<img id="imageResult" class="img-thumbnail"></img>
+												<p class="messageImage"></p>
+											</div>
+										</div>
+									</div>
+
+								</div>
+
                 <div class="row">
                   <div class="col-sm-12 col-md-12 col-lg-12">
 

@@ -235,12 +235,25 @@
                               </div>
                           </div>
 
+													<div class="form-group">
+              							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="encodingOption">Encoding Option <span class="required">*</span>
+              							</label>
+
+                            <div class="col-md-5 col-sm-5 col-xs-12">
+                              <select id="encodingOption" class="form-control">
+																<option value="1">Ordinal Encoder</option>
+                                <option value="0">One hot encoder</option>
+                              </select>
+                            </div>
+                          </div>
+
                           <div class="form-group">
               							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="optionScale">Preprocessing Option <span class="required">*</span>
               							</label>
 
                             <div class="col-md-5 col-sm-5 col-xs-12">
                               <select id="optionScale" class="form-control">
+																<option value="0">No apply scale</option>
                                 <option value="1">Apply normal scale</option>
                                 <option value="2">Apply Min Max scale</option>
                                 <option value="3">Apply Log scale</option>
@@ -255,7 +268,7 @@
 
                             <div class="col-md-5 col-sm-5 col-xs-12">
                               <select id="algorithm" class="form-control">
-                                <option value="1">All Algorithm</option>
+																<option value="2">Select an option</option>
                                 <option value="2">K-Means</option>
                                 <option value="3">Birch</option>
                                 <option value="4">Agglomerative</option>

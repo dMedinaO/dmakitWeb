@@ -18,12 +18,17 @@ job = sys.argv[3]
 pathResponse = sys.argv[4]
 algorithm = int(sys.argv[5])
 optionNormalize = int(sys.argv[7])
+optionEncode = int(sys.argv[8])
+
 if algorithm <4:
     params = sys.argv[6].split("-")
 else:
     params = sys.argv[6]
+
+print params
+
 #hacemos la instancia del obeto...
-execProcess = execAlgorithm.execAlgorithm(dataSet, user, job, pathResponse, algorithm, params, optionNormalize)
+execProcess = execAlgorithm.execAlgorithm(dataSet, user, job, pathResponse, algorithm, params, optionNormalize, optionEncode)
 execProcess.execAlgorithmByOptions()#hacemos la ejecucion del algoritmo con respecto a la data que se entrego
 
 #cambiamos el estado al job

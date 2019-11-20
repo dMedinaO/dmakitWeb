@@ -9,13 +9,26 @@ $(document).ready(function() {
 	}).done( function( info ){
 		var response = JSON.parse(info);
 
+  var responseImage = "../../../dataStorage/"+response.request+"/"+job+"/plotClusters.png";
+
   var response = "../../../dataStorage/"+response.request+"/"+job+"/responseClustering.json";
+
 
     readTextFile(response, function(text){
       var data = JSON.parse(text);
 
       showPieChart(data.membersGroup);
       loadDataPanel(data);
+
+      console.log(data);
+      if (data.figureClusters == "ERROR"){
+        console.log("AQUI!!!");
+        $(".messageImage").html( "No data available for this option." );
+      }else{
+        
+        var img = document.getElementById('imageResult');
+        img.src= responseImage;
+      }
     });
   });
 });

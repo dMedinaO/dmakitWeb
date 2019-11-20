@@ -12,6 +12,7 @@
   $descJob = $_REQUEST['descJob'];
   $algorithm = $_REQUEST['algorithm'];
   $optionScale = $_REQUEST['optionScale'];
+  $optionEncode = $_REQUEST['optionEncode'];
 
   //parametros asociados al algoritmo...
   $kValues = $_REQUEST['kValues'];
@@ -50,7 +51,7 @@
   }
 
   #obtenemos el nombre del archivo de entrada...
-  $pathData = "/var/www/html/smartTraining/dataStorage/tmp/clustering/".$idUSer."_documentClustering.txt";
+  $pathData = "/var/www/html/dmakitWeb/dataStorage/tmp/clustering/".$idUSer."_documentClustering.txt";
   $nameDocument = readDocument($pathData);
 
   #hacemos la insercion a la base de datos...
@@ -66,7 +67,7 @@
 
     #movemos el archivo...
     //se crea directorio asociado a la licitacion...
-    $path = "/var/www/html/smartTraining/dataStorage/$idUSer/$idJob";
+    $path = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob";
 
     if (!file_exists($path)) {
         mkdir($path, 0777, true);
@@ -74,87 +75,77 @@
 
     #movemos el archivo...
     //movemos el archivo al path de la licitacion...
-    $pathActual = "/var/www/html/smartTraining/dataStorage/tmp/clustering/$nameDocument";
-    $pathMove = "/var/www/html/smartTraining/dataStorage/$idUSer/$idJob/";
+    $pathActual = "/var/www/html/dmakitWeb/dataStorage/tmp/clustering/$nameDocument";
+    $pathMove = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob/";
 
     $command = "mv $pathActual $pathMove";
     exec($command);
 
     #hacemos la ejecucion del clustering si corresponde...
-    if ($algorithm == 1){
-      $responseValue['response'] = "BIEN";
+    $responseValue['response'] = "BIEN";
 
-      #ejecutamos el algoritmo...
-      $command = "python /var/www/html/smartTraining/model/launcherClusteringService.py $pathMove$nameDocument $idUSer $idJob /var/www/html/smartTraining/dataStorage/ $optionScale";
+    //trabajamos con el tipo de algoritmo segun corresponda y hacemos la ejecucion correspondiente
+    if ($algorithm == 2){#K-Means
+
+      $command = "python /var/www/html/dmakitWeb/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/dmakitWeb/dataStorage/ 1 $kValues $optionScale $optionEncode";
       exec($command);
       $responseValue['command'] = $command;
       $responseValue['job'] = $idJob;
+    }
 
-    }else{
+    if ($algorithm == 3){#Birch
 
-      $responseValue['response'] = "BIEN";
+      $command = "python /var/www/html/dmakitWeb/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/dmakitWeb/dataStorage/ 2 $kValues $optionScale $optionEncode";
+      exec($command);
+      $responseValue['command'] = $command;
+      $responseValue['job'] = $idJob;
+    }
 
-      //trabajamos con el tipo de algoritmo segun corresponda y hacemos la ejecucion correspondiente
-      if ($algorithm == 2){#K-Means
+    if ($algorithm == 4){#Agglomerative
 
-        $command = "python /var/www/html/smartTraining/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/smartTraining/dataStorage/ 1 $kValues $optionScale";
-        exec($command);
-        $responseValue['command'] = $command;
-        $responseValue['job'] = $idJob;
-      }
+      $command = "python /var/www/html/dmakitWeb/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/dmakitWeb/dataStorage/ 3 $linkageValues-$affinityValues-$kValues $optionScale $optionEncode";
+      exec($command);
+      $responseValue['command'] = $command;
+      $responseValue['job'] = $idJob;
+    }
 
-      if ($algorithm == 3){#Birch
+    if ($algorithm == 5){#affinity
+      $command = "python /var/www/html/dmakitWeb/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/dmakitWeb/dataStorage/ 6 - $optionScale $optionEncode";
+      exec($command);
+      $responseValue['command'] = $command;
+      $responseValue['job'] = $idJob;
+    }
 
-        $command = "python /var/www/html/smartTraining/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/smartTraining/dataStorage/ 2 $kValues $optionScale";
-        exec($command);
-        $responseValue['command'] = $command;
-        $responseValue['job'] = $idJob;
-      }
+    if ($algorithm == 6){#meanShift
+      $command = "python /var/www/html/dmakitWeb/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/dmakitWeb/dataStorage/ 5 - $optionScale $optionEncode";
+      exec($command);
+      $responseValue['command'] = $command;
+      $responseValue['job'] = $idJob;
+    }
 
-      if ($algorithm == 4){#Agglomerative
+    if ($algorithm == 7){#DBScan
+      $command = "python /var/www/html/dmakitWeb/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/dmakitWeb/dataStorage/ 4 - $optionScale $optionEncode";
+      exec($command);
+      $responseValue['command'] = $command;
+      $responseValue['job'] = $idJob;
+    }
 
-        $command = "python /var/www/html/smartTraining/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/smartTraining/dataStorage/ 3 $linkageValues-$affinityValues-$kValues $optionScale";
-        exec($command);
-        $responseValue['command'] = $command;
-        $responseValue['job'] = $idJob;
-      }
+    //preguntamos si los archivos de salida existen...
+    $response1 = file_exists("/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob/responseClustering.csv");
+    $response2 = file_exists("/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob/responseClustering.json");
 
-      if ($algorithm == 5){#affinity
-        $command = "python /var/www/html/smartTraining/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/smartTraining/dataStorage/ 6 - $optionScale";
-        exec($command);
-        $responseValue['command'] = $command;
-        $responseValue['job'] = $idJob;
-      }
-      if ($algorithm == 6){#meanShift
-        $command = "python /var/www/html/smartTraining/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/smartTraining/dataStorage/ 5 - $optionScale";
-        exec($command);
-        $responseValue['command'] = $command;
-        $responseValue['job'] = $idJob;
-      }
-      if ($algorithm == 7){#DBScan
-        $command = "python /var/www/html/smartTraining/model/launcherClusteringWeb.py $pathMove$nameDocument $idUSer $idJob /var/www/html/smartTraining/dataStorage/ 4 - $optionScale";
-        exec($command);
-        $responseValue['command'] = $command;
-        $responseValue['job'] = $idJob;
-      }
-
-      //preguntamos si los archivos de salida existen...
-      $response1 = file_exists("/var/www/html/smartTraining/dataStorage/$idUSer/$idJob/responseClustering.csv");
-      $response2 = file_exists("/var/www/html/smartTraining/dataStorage/$idUSer/$idJob/responseClustering.json");
-
-      if ($response1 == true){
-        if ($response2 == true){
-          $responseValue['response'] = "BIEN";
-        }else{
-          $responseValue['response'] = "ERROR";
-          $query = "update job set job.statusJob = 'ERROR', job.modifiedJob = NOW() where job.idjob = $idJob";
-          $resultado = mysqli_query($conexion, $query);
-        }
+    if ($response1 == true){
+      if ($response2 == true){
+        $responseValue['response'] = "BIEN";
       }else{
         $responseValue['response'] = "ERROR";
         $query = "update job set job.statusJob = 'ERROR', job.modifiedJob = NOW() where job.idjob = $idJob";
         $resultado = mysqli_query($conexion, $query);
       }
+    }else{
+      $responseValue['response'] = "ERROR";
+      $query = "update job set job.statusJob = 'ERROR', job.modifiedJob = NOW() where job.idjob = $idJob";
+      $resultado = mysqli_query($conexion, $query);
     }
   }else{
     $responseValue['response'] = "ERROR";

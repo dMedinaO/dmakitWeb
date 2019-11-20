@@ -77,88 +77,62 @@ $(document).ready(function() {
 			var descJob = $("#initNewJob #descJob").val();
       var algorithm = $("#initNewJob #algorithm").val();
 			var optionScale = $("#initNewJob #optionScale").val();
+			var optionEncode = $("#initNewJob #encodingOption").val();
 
-			if (algorithm == 1){//esta trabajando con todos los algoritmos en metodo exploratorio o servicio
-				$.ajax({
-					method: "POST",
-					url: "../php/clustering/createJob.php",
-					data: {
-						"nameJob"   : nameJob,
-						"descJob"   : descJob,
-	          "algorithm"   : algorithm,
-						"optionScale" : optionScale
-					}
-				}).done( function( info ){
-					var parse = JSON.parse(info);
+			kValues = $("#initNewJob #kValues").val();
+			linkageValues = $("#initNewJob #linkage").val();
+			affinityValues = $("#initNewJob #affinity").val();
 
-					if (parse.response == "BIEN"){
+			$.ajax({
+				method: "POST",
+				url: "../php/clustering/createJobOneProcess.php",
+				data: {
+					"nameJob"   : nameJob,
+					"descJob"   : descJob,
+	         "algorithm"   : algorithm,
+					"kValues"   : kValues,
+					"linkageValues"   : linkageValues,
+	        "affinityValues"   : affinityValues,
+					"optionScale" : optionScale,
+					"optionEncode": optionEncode
+				}
+			}).done( function( info ){
+				var parse = JSON.parse(info);
 
-						//pregunto si los archivos existen...
-		        var job=parse.job;
-						location.href="responseJob.php?job="+job+"&scale="+optionScale;
-
-					}else{
-						$('#loading').hide();
-						$('#errorResponse').show();
-						setTimeout("location.href=''", 5000);
-					}
-
-				});
-			}else{//seleccion de un algoritmo con sus respectivos parametros
-				kValues = $("#initNewJob #kValues").val();
-				linkageValues = $("#initNewJob #linkage").val();
-				affinityValues = $("#initNewJob #affinity").val();
-
-				$.ajax({
-					method: "POST",
-					url: "../php/clustering/createJobOneProcess.php",
-					data: {
-						"nameJob"   : nameJob,
-						"descJob"   : descJob,
-	          "algorithm"   : algorithm,
-						"kValues"   : kValues,
-						"linkageValues"   : linkageValues,
-	          "affinityValues"   : affinityValues,
-						"optionScale" : optionScale
-					}
-				}).done( function( info ){
-					var parse = JSON.parse(info);
-
-					if (parse.response == "BIEN"){
-						var job=parse.job;
-						//manejamos el valor del algorithm...
-						if (algorithm == 2){
-							location.href="viewResult.php?job="+job+"&algorithm=0";
-						}
-
-						if (algorithm == 3){
-							location.href="viewResult.php?job="+job+"&algorithm=1";
-						}
-
-						if (algorithm == 4){
-							location.href="viewResult.php?job="+job+"&algorithm=2";
-						}
-
-						if (algorithm == 5){
-							location.href="viewResult.php?job="+job+"&algorithm=3";
-						}
-
-						if (algorithm == 6){
-							location.href="viewResult.php?job="+job+"&algorithm=4";
-						}
-
-						if (algorithm == 7){
-							location.href="viewResult.php?job="+job+"&algorithm=5";
-						}
-
-					}else{
-						$('#loading').hide();
-						$('#errorResponse').show();
-						setTimeout("location.href=''", 5000);
+				if (parse.response == "BIEN"){
+					var job=parse.job;
+					//manejamos el valor del algorithm...
+					
+					if (algorithm == 2){
+						location.href="viewResult.php?job="+job+"&algorithm=0";
 					}
 
-				});
-			}
+					if (algorithm == 3){
+						location.href="viewResult.php?job="+job+"&algorithm=1";
+					}
+
+					if (algorithm == 4){
+						location.href="viewResult.php?job="+job+"&algorithm=2";
+					}
+
+					if (algorithm == 5){
+						location.href="viewResult.php?job="+job+"&algorithm=3";
+					}
+
+					if (algorithm == 6){
+						location.href="viewResult.php?job="+job+"&algorithm=4";
+					}
+
+					if (algorithm == 7){
+						location.href="viewResult.php?job="+job+"&algorithm=5";
+					}
+
+				}else{
+					$('#loading').hide();
+					$('#errorResponse').show();
+					setTimeout("location.href=''", 5000);
+				}
+			});
     });
 
 });
