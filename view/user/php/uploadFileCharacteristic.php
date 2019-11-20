@@ -8,7 +8,7 @@
 	$templocation = $archivo["tmp_name"];
 	$name = $archivo["name"];
 
-	$pathMove = "/var/www/html/smartTraining/dataStorage/tmp/characteristic/".$name;
+	$pathMove = "/var/www/html/dmakitWeb/dataStorage/tmp/characteristic/".$name;
 
 
 	if(!$templocation){
@@ -21,7 +21,7 @@
 		echo "Error al guardar el archivo";
 	}
 
-	$pathData = "/var/www/html/smartTraining/dataStorage/tmp/characteristic/".$idUSer."_documentCharacteristic.txt";
+	$pathData = "/var/www/html/dmakitWeb/dataStorage/tmp/characteristic/".$idUSer."_documentCharacteristic.txt";
 	//finalmente escribimos un archivo de texto con el nombre de la imagen...
 	$file = fopen($pathData, "w");
 

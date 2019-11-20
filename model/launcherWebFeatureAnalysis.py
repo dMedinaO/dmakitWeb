@@ -17,6 +17,7 @@ dataSet = pd.read_csv(sys.argv[3])
 pathResponse = sys.argv[4]
 option = int(sys.argv[5])
 optionNormalize = int(sys.argv[6])
+optionEncode = int(sys.argv[7])
 
 dictResponse = {}
 
@@ -25,7 +26,7 @@ execFeatures = execFeatureAnalysis.featureAnalysis(user, job, dataSet, pathRespo
 
 if option == 1:#correlation matrix
     dictResponse.update({'Exce': "Correlation Data"})
-    response = execFeatures.execCorrelationData(optionNormalize)
+    response = execFeatures.execCorrelationData(optionNormalize, optionEncode)
     dictResponse.update({"Response": response})
 
 elif option == 2:#deformacion espacio
@@ -38,7 +39,7 @@ elif option == 2:#deformacion espacio
 
 elif option == 3:#PCA
     dictResponse.update({'Exce': "PCA"})
-    response = execFeatures.execPCA(optionNormalize)
+    response = execFeatures.execPCA(optionNormalize, optionEncode)
     dictResponse.update({"Response": response})
 
 elif option == 4:#Mutual Information

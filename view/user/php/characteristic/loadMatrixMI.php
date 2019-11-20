@@ -7,9 +7,9 @@
   $job = $_GET['job'];
 
   #hacemos la ejecucion del script...
-  $varPath = "/var/www/html/smartTraining/dataStorage/$user/$job/MatrixMI_$job.csv";
+  $varPath = "/var/www/html/dmakitWeb/dataStorage/$user/$job/MatrixMI_$job.csv";
 
-  $command = "python /var/www/html/smartTraining/model/LauncherreadCSV.py $varPath";
+  $command = "python /var/www/html/dmakitWeb/model/LauncherreadCSV.py $varPath";
   $output = [];
 
   exec($command, $output);

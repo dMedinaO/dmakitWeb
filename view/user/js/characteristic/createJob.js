@@ -42,6 +42,7 @@ $(document).ready(function() {
 			var descJob = $("#initNewJob #descJob").val();
       var processJob = $("#initNewJob #processJob").val();
 			var optionScale = $("#initNewJob #optionScale").val();
+			var optionEncode = $("#initNewJob #optionEncode").val();
 
 			if (processJob == 1){//correlation option
 				$.ajax({
@@ -50,11 +51,12 @@ $(document).ready(function() {
 					data: {
 						"nameJob"   : nameJob,
 						"descJob"   : descJob,
-						"optionScale": optionScale
+						"optionScale": optionScale,
+						"optionEncode": optionEncode
 					}
 				}).done( function( info ){
 					var response = JSON.parse(info);
-
+					console.log(response);
 					if (response.exec== "ERROR"){
 						$('#loading').hide();
 						$('#errorResponse').show();
@@ -138,7 +140,8 @@ $(document).ready(function() {
 					data: {
 						"nameJob"   : nameJob,
 						"descJob"   : descJob,
-						"optionScale": optionScale
+						"optionScale": optionScale,
+						"optionEncode": optionEncode
 					}
 				}).done( function( info ){
 					var response = JSON.parse(info);

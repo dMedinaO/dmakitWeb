@@ -32,13 +32,13 @@
 	}
 
   //hacemos la ejecucion del script
-  $nameFile = "/var/www/html/smartTraining/dataStorage/$idUSer/$job/$nameData";
-  $pathRespone = "/var/www/html/smartTraining/dataStorage/";
+  $nameFile = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$job/$nameData";
+  $pathRespone = "/var/www/html/dmakitWeb/dataStorage/";
 
-  $command = "python /var/www/html/smartTraining/model/launcherWebFeatureAnalysis.py $idUSer $job $nameFile $pathRespone 2 $optionScale $feature $kind";
+  $command = "python /var/www/html/dmakitWeb/model/launcherWebFeatureAnalysis.py $idUSer $job $nameFile $pathRespone 2 $optionScale $feature $kind";
   exec($command);
   $responseFile = "../../../dataStorage/$idUSer/$job/responseCorrelation$job.json";
-  $responseData = file_exists("/var/www/html/smartTraining/dataStorage/$idUSer/$job/responseCorrelation$job.json");
+  $responseData = file_exists("/var/www/html/dmakitWeb/dataStorage/$idUSer/$job/responseCorrelation$job.json");
 
   if ($responseData == true){
     $response['fileResponse'] = $responseFile;
