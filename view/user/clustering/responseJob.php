@@ -579,6 +579,16 @@
 
           						            </li>
 
+																	<li class="list-header">Developers and Information</li>
+
+																	<li>
+          						                <a href="../aboutUs">
+          						                    <i class="fa fa-users"></i>
+          						                    <span class="menu-title">About Us</span><i class="arrow"></i>
+          						                </a>
+
+          						            </li>
+																	
                                   <li>
           						                <a href="../">
           						                    <i class="fa fa fa-home"></i>

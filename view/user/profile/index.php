@@ -247,7 +247,7 @@
 																			<i class="fa fa fa-globe icon-lg icon-fw"></i>
 																			<span class="menu-title country"></span>
 																		</li>
-																	</ul>																	
+																	</ul>
 																	<hr>
 															</div>
 															<div class="fluid">
@@ -479,6 +479,16 @@
 
 																	</li>
 
+																	<li class="list-header">Developers and Information</li>
+
+																	<li>
+          						                <a href="../aboutUs">
+          						                    <i class="fa fa-users"></i>
+          						                    <span class="menu-title">About Us</span><i class="arrow"></i>
+          						                </a>
+
+          						            </li>
+																	
                                   <li>
           						                <a href="../">
           						                    <i class="fa fa fa-home"></i>
