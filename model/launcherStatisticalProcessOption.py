@@ -13,10 +13,11 @@ job = sys.argv[2]#test with 1
 dataSet = sys.argv[3]#test with testingFeature.csv
 idDataSet = sys.argv[2] #test with 1
 pathResponse = sys.argv[4] #cualquiera que desees
-optionProcess = sys.argv[5] # las opciones de job posibles, ver checkExec de launcherStatisticalData
+optionProcess = int(sys.argv[5]) # las opciones de job posibles, ver checkExec de launcherStatisticalData
+optionScale = int(sys.argv[6])#tipo de escalamiento a realizar
 
 #instancia al objeto...
-launcherStatisticalDataObject = launcherStatisticalData.launcherStatisticalProcess(user, job, dataSet, idDataSet, pathResponse, optionProcess)
+launcherStatisticalDataObject = launcherStatisticalData.launcherStatisticalProcess(user, job, dataSet, idDataSet, pathResponse, optionProcess, optionScale)
 launcherStatisticalDataObject.checkExec()
 
 #cambiamos el estado al job

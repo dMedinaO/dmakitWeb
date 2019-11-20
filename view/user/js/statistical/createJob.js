@@ -28,14 +28,16 @@ $(document).ready(function() {
 			var nameJob = $("#initNewJob #nameJob").val();
 			var descJob = $("#initNewJob #descJob").val();
       var processJob = $("#initNewJob #processJob").val();
+			var optionScale = $("#initNewJob #optionScale").val();
 
-			if (processJob == 2){//correlation option
+			if (processJob == 2){
 				$.ajax({
 					method: "POST",
 					url: "../php/statistical/execDispersion.php",
 					data: {
 						"nameJob"   : nameJob,
 						"descJob"   : descJob,
+						"optionScale" : optionScale
 
 					}
 				}).done( function( info ){
@@ -71,6 +73,7 @@ $(document).ready(function() {
 					data: {
 						"nameJob"   : nameJob,
 						"descJob"   : descJob,
+						"optionScale" : optionScale
 
 					}
 				}).done( function( info ){

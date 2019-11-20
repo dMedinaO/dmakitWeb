@@ -26,8 +26,8 @@ $idUSer = $_SESSION['idUser'];
 	//hacemos la ejecucion...
 	$output = [];
 
-	$dataSet = "/var/www/html/smartTraining/dataStorage/$idUSer/$job/$nameData";
-	$command = "python /var/www/html/smartTraining/model/evaluateShapiro.py $dataSet $feature";
+	$dataSet = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$job/$nameData";
+	$command = "python /var/www/html/dmakitWeb/model/evaluateShapiro.py $dataSet $feature";
 	exec($command, $output);
 	echo $output[0];
 

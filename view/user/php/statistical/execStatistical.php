@@ -10,14 +10,15 @@ $idUSer = $_SESSION['idUser'];
   #recibimos los parametros...
   $nameJob = $_REQUEST['nameJob'];
   $descJob = $_REQUEST['descJob'];
+  $optionScale = $_REQUEST['optionScale'];
 
   #obtenemos los datos desde la sesion...
   $idJob = time();#sera el id del job...
   $response ['job'] = $idJob;
 
-  $pathRespone = "/var/www/html/smartTraining/dataStorage/";
+  $pathRespone = "/var/www/html/dmakitWeb/dataStorage/";
   #obtenemos el nombre del archivo de entrada...
-  $pathData = "/var/www/html/smartTraining/dataStorage/tmp/statistical/".$idUSer."_documentStatistical.txt";
+  $pathData = "/var/www/html/dmakitWeb/dataStorage/tmp/statistical/".$idUSer."_documentStatistical.txt";
   $nameDocument = readDocument($pathData);
   $response ['nameFile'] = $nameDocument;
 
@@ -33,7 +34,7 @@ $idUSer = $_SESSION['idUser'];
   if ($requestData == "BIEN"){#movemos el archivo de tmp al path del usuario y ejecutamos el proceso solo si la opcion de algorithm es todos...
 
     #movemos el archivo... creamos directorio
-    $path = "/var/www/html/smartTraining/dataStorage/$idUSer/$idJob";
+    $path = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob";
 
     if (!file_exists($path)) {
         mkdir($path, 0777, true);
@@ -41,18 +42,18 @@ $idUSer = $_SESSION['idUser'];
 
     #movemos el archivo...
     //movemos el archivo al path de la licitacion...
-    $pathActual = "/var/www/html/smartTraining/dataStorage/tmp/statistical/$nameDocument";
-    $pathMove = "/var/www/html/smartTraining/dataStorage/$idUSer/$idJob/";
+    $pathActual = "/var/www/html/dmakitWeb/dataStorage/tmp/statistical/$nameDocument";
+    $pathMove = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob/";
 
     $command = "mv $pathActual $pathMove";
     exec($command);
 
     //ejecutamos el script que permite agrear las features del set de datos a la base de datos
-    $command = "python /var/www/html/smartTraining/model/launcherCheckFeature.py $pathMove$nameDocument $idJob";
+    $command = "python /var/www/html/dmakitWeb/model/launcherCheckFeature.py $pathMove$nameDocument $idJob";
     exec($command);
 
     //hacemos la ejecucion del script
-    $command = "python /var/www/html/smartTraining/model/launcherStatisticalProcessOption.py $idUSer $idJob $pathMove$nameDocument $pathRespone 6";
+    $command = "python /var/www/html/dmakitWeb/model/launcherStatisticalProcessOption.py $idUSer $idJob $pathMove$nameDocument $pathRespone 6 $optionScale";
     $response['command2'] = $command;
 
     exec($command);
@@ -61,8 +62,8 @@ $idUSer = $_SESSION['idUser'];
     $responseFile = "../../../dataStorage/$idUSer/$idJob/responseStatisticProcess$idJob.json";
     $responseFile2 = "../../../dataStorage/$idUSer/$idJob/statisticSummary_$idJob.csv";
 
-    $responseData = file_exists("/var/www/html/smartTraining/dataStorage/$idUSer/$idJob/responseStatisticProcess$idJob.json");
-    $responseData2 = file_exists("/var/www/html/smartTraining/dataStorage/$idUSer/$idJob/statisticSummary_$idJob.csv");
+    $responseData = file_exists("/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob/responseStatisticProcess$idJob.json");
+    $responseData2 = file_exists("/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob/statisticSummary_$idJob.csv");
 
     if ($responseData == true){
       $response['fileResponse'] = $responseFile;
