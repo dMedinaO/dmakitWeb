@@ -93,7 +93,7 @@
 	  <script src="../plugins/datatables/media/js/dataTables.bootstrap.js"></script>
 	  <script src="../plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
 
-    <script src="../js/prediction/selectedFeature.js"></script>
+    <script src="../js/linearModels/selectedFeature.js"></script>
 
 </head>
 

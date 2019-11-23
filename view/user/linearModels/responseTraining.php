@@ -85,7 +85,7 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
     <!-- script para la carga de datos -->
-    <script src="../js/prediction/responseJob.js"></script>
+    <script src="../js/linearModels/responseJob.js"></script>
 
 </head>
 

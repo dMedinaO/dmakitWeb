@@ -84,7 +84,7 @@
 
 
     <!-- script para la carga de datos -->
-    <script src="../js/prediction/createJobProcess.js"></script>
+    <script src="../js/linearModels/createJobProcess.js"></script>
 
 </head>
 
@@ -179,7 +179,7 @@
                     <!--Page Title-->
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <div id="page-title">
-                        <h1 class="page-header text-overflow">Supervised Learning: Prediction Process</h1>
+                        <h1 class="page-header text-overflow">Supervised Learning: Predictive Linear Models</h1>
 
                     </div>
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -201,7 +201,7 @@
                         </h3>
                       </div>
                       <div class="panel-body">
-                        <form id="frmAgregarFile" action="../php/uploadFilePrediction.php" class="dropzone" >
+                        <form id="frmAgregarFile" action="../php/uploadFileLinearModels.php" class="dropzone" >
                           <div class="dz-default dz-message">
                             <div class="dz-icon">
                               <i class="demo-pli-upload-to-cloud icon-5x"></i>
@@ -244,6 +244,7 @@
                                 <option value="2">Apply Min Max scale</option>
                                 <option value="3">Apply Log scale</option>
                                 <option value="4">Apply Log Normal scale</option>
+																<option value="0">No Apply Scale</option>
                               </select>
                             </div>
                           </div>
@@ -281,10 +282,10 @@
                   <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="panel panel-bordered panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Supervised Learning: Prediction Models Module</h3>
+                            <h3 class="panel-title">Supervised Learning: Prediction Linear Models Module</h3>
                         </div>
                         <div class="panel-body">
-                          The prediction model module is designed to train datasets whose response is represented by a continuous distribution. All these models are based on trainings of regression type models, contemplating different algorithms that allow to evaluate the data set from different analysis points. For example, contemplating the relevance of the characteristics as Random Forest works. Evaluating distances in the plane, as is the case of KNN or generating spatial transformations through the use of kernels, for example. Each model is trained with respect to the data set delivered, which must be pre-processed to scale the data in same dimensional spaces. The answers of the models are based on how accurate the predicted values are with respect to the real ones, using metrics such as Pearson coefficient, R Score, Spermman rank and Kendall Tau coefficients.
+                          Predictive models based on linear regressions, are a set of models that allow predicting continuous values in data sets, using linear regression techniques. DMAKit has methods such as: Ordinary Least Square, Ridge Regression, Lasso, Elastic-Net and Bayesian Regression. Models are evaluated through different performance measures and overfitting is evaluated through the use of cross-validation techniques.
                         </div>
                     </div>
                   </div>
