@@ -365,6 +365,14 @@
 
           						            </li>
 
+																	<li>
+																			<a href="../linearModels">
+																					<i class="fa fa fa-bar-chart"></i>
+																					<span class="menu-title">Supervised Learning: Linear Models</span><i class="arrow"></i>
+																			</a>
+
+																	</li>
+
 																	<li class="list-header">Developers and Information</li>
 
 																	<li>
@@ -374,7 +382,7 @@
           						                </a>
 
           						            </li>
-																	
+
                                   <li>
           						                <a href="../">
           						                    <i class="fa fa fa-home"></i>
