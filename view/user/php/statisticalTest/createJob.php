@@ -16,9 +16,9 @@
   $idJob = time();#sera el id del job...
   $response ['job'] = $idJob;
 
-  $pathRespone = "/var/www/html/smartTraining/dataStorage/";
+  $pathRespone = "/var/www/html/dmakitWeb/dataStorage/";
   #obtenemos el nombre del archivo de entrada...
-  $pathData = "/var/www/html/smartTraining/dataStorage/tmp/statisticalTest/".$idUSer."_documentStatistical.txt";
+  $pathData = "/var/www/html/dmakitWeb/dataStorage/tmp/statisticalTest/".$idUSer."_documentStatistical.txt";
   $nameDocument = readDocument($pathData);
   $response ['nameFile'] = $nameDocument;
 
@@ -34,7 +34,7 @@
   if ($requestData == "BIEN"){#movemos el archivo de tmp al path del usuario y ejecutamos el proceso solo si la opcion de algorithm es todos...
 
     #movemos el archivo... creamos directorio
-    $path = "/var/www/html/smartTraining/dataStorage/$idUSer/$idJob";
+    $path = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob";
 
     if (!file_exists($path)) {
         mkdir($path, 0777, true);
@@ -42,14 +42,14 @@
 
     #movemos el archivo...
     //movemos el archivo al path de la licitacion...
-    $pathActual = "/var/www/html/smartTraining/dataStorage/tmp/statisticalTest/$nameDocument";
-    $pathMove = "/var/www/html/smartTraining/dataStorage/$idUSer/$idJob/";
+    $pathActual = "/var/www/html/dmakitWeb/dataStorage/tmp/statisticalTest/$nameDocument";
+    $pathMove = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob/";
 
     $command = "mv $pathActual $pathMove";
     exec($command);
 
     //ejecutamos el script que permite agrear las features del set de datos a la base de datos
-    $command = "python /var/www/html/smartTraining/model/LauncherStatisticalTest.py $pathMove$nameDocument $option";
+    $command = "python /var/www/html/dmakitWeb/model/LauncherStatisticalTest.py $pathMove$nameDocument $option";
     $output = [];
     exec($command, $output);
 

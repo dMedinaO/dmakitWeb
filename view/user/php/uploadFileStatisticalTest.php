@@ -9,7 +9,7 @@ $idUSer = $_SESSION['idUser'];
 	$templocation = $archivo["tmp_name"];
 	$name = $archivo["name"];
 
-	$pathMove = "/var/www/html/smartTraining/dataStorage/tmp/statisticalTest/".$name;
+	$pathMove = "/var/www/html/dmakitWeb/dataStorage/tmp/statisticalTest/".$name;
 
 
 	if(!$templocation){
@@ -22,7 +22,7 @@ $idUSer = $_SESSION['idUser'];
 		echo "Error al guardar el archivo";
 	}
 
-	$pathData = "/var/www/html/smartTraining/dataStorage/tmp/statisticalTest/".$idUSer."_documentStatistical.txt";
+	$pathData = "/var/www/html/dmakitWeb/dataStorage/tmp/statisticalTest/".$idUSer."_documentStatistical.txt";
 	//finalmente escribimos un archivo de texto con el nombre de la imagen...
 	$file = fopen($pathData, "w");
 

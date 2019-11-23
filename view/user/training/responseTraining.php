@@ -306,6 +306,31 @@
                     </div>
                   </div>
                 </div>
+
+								<div class="row">
+									<div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="panel panel-bordered panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Export Model</h3>
+                        </div>
+                        <div class="panel-body">
+
+                          <p>
+														It is possible export the created model, using joblib library. The mainly advantages to export model are to classifier new examples and using the model. Is important remember that, when you use a model, the new examples must have the sames features, in case that it is not, the model will not to work.
+													</p>
+
+													<div class="form-group">
+                              <div class="col-sm-5">
+                                <button type="button" id="export" class="btn btn-primary">Export Model</button>
+                              </div>
+                          </div>
+
+													<p class="responseExportModel"></p>
+
+                        </div>
+                    </div>
+                  </div>
+								</div>
                 <div class="row">
 
                   <div class="col-lg-12 col-md-12 col-sm-12">
@@ -493,6 +518,14 @@
 
           						            </li>
 
+																	<li>
+          						                <a href="../models">
+          						                    <i class="fa fa fa-graduation-cap"></i>
+          						                    <span class="menu-title">My models</span><i class="arrow"></i>
+          						                </a>
+
+          						            </li>
+																	
 																	<li class="list-header">Process Options</li>
 
                                   <li>

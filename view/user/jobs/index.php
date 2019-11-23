@@ -339,6 +339,14 @@
 
           						            </li>
 
+																	<li>
+          						                <a href="../models">
+          						                    <i class="fa fa fa-graduation-cap"></i>
+          						                    <span class="menu-title">My models</span><i class="arrow"></i>
+          						                </a>
+
+          						            </li>
+																	
                                   <li>
           						                <a href="../jobsQueue">
           						                    <i class="fa fa fa-archive"></i>

@@ -35,17 +35,17 @@
 	}
 
   //hacemos la ejecucion del script
-  $nameFile = "/var/www/html/smartTraining/dataStorage/$idUSer/$job/$nameData";
-  $pathRespone = "/var/www/html/smartTraining/dataStorage/";
+  $nameFile = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$job/$nameData";
+  $pathRespone = "/var/www/html/dmakitWeb/dataStorage/";
 
   //hacemos la ejecucion del script
-  $command = "python /var/www/html/smartTraining/model/launcherSupervisedClaWeb.py $nameFile $idUSer $job $pathRespone 3 $params $val $responseFeature $scale";
+  $command = "python /var/www/html/dmakitWeb/model/launcherSupervisedClaWeb.py $nameFile $idUSer $job $pathRespone 3 $params $val $responseFeature $scale";
   $response['command'] = $command;
   exec($command);
 
   //preguntamos si este archivo existe...
   $responseFile = "../../../dataStorage/$idUSer/$job/responseTraining$job.json";
-  $responseData = file_exists("/var/www/html/smartTraining/dataStorage/$idUSer/$job/responseTraining$job.json");
+  $responseData = file_exists("/var/www/html/dmakitWeb/dataStorage/$idUSer/$job/responseTraining$job.json");
 
   if ($responseData == true){
     $response['fileResponse'] = $responseFile;

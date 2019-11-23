@@ -4,7 +4,51 @@ $(document).ready(function() {
 	showDefinitionData();
 	loadImagenes();
 
+	savemodel();
+
 });
+
+function savemodel(){
+
+	$("#export").on("click", function(){
+
+			var idjob = getQuerystring('job');
+
+			$.ajax({
+				method: "POST",
+				url: "../php/classifier/exportModel.php",
+				data: {
+						"idjob"   : idjob
+					}
+
+			}).done( function( info ){
+
+				var json_info = JSON.parse( info );
+				console.log(json_info);
+				mostrar_mensaje( json_info );
+				//location.reload(true);
+			});
+
+	});
+}
+
+var mostrar_mensaje = function( informacion ){
+
+	var texto = "", color = "";
+	if( informacion.response == "BIEN" ){
+		texto = "<strong>Ok!</strong> Model saved successful!.";
+		color = "#379911";
+	}else{
+		texto = "<strong>Error</strong>, Error during save job.";
+		color = "#C9302C";
+	}
+
+	$(".responseExportModel").html( texto ).css({"color": color });
+	$(".responseExportModel").fadeOut(5000, function(){
+		$(this).html("");
+		$(this).fadeIn(3000);
+	});
+}
 
 function loadImagenes(){
 
@@ -48,96 +92,84 @@ function loadImagenes(){
 			$(".validation").html(data.Validation);
 			$(".transform").html(JSON.stringify(data.classTransform));
 
-			//hacemos el grafico de fiabilidad y bakanosidad
-			var xData = data.matrixConfusionResponse.header;
 
-			var trace1 = {
-				x: xData,
-				y: data.matrixConfusionResponse.fiabilidad,
-				name: 'Reliability',
-				type: 'bar'
-			};
 
-			var trace2 = {
-				x: xData,
-				y: data.matrixConfusionResponse.bakanosidad,
-				name: 'Bakanosidad',
-				type: 'bar'
-			};
+						//hacemos el grafico de fiabilidad y bakanosidad
+						var xData = data.matrixConfusionResponse.header;
 
-			var dataLa = [trace1, trace2];
+						var trace1 = {
+							x: xData,
+							y: data.matrixConfusionResponse.fiabilidad,
+							name: 'Reliability',
+							type: 'bar'
+						};
 
-			var layout = {barmode: 'group'};
+						var trace2 = {
+							x: xData,
+							y: data.matrixConfusionResponse.bakanosidad,
+							name: 'Bakanosidad',
+							type: 'bar'
+						};
 
-			Plotly.newPlot('fiabilidad', dataLa, layout);
+						var dataLa = [trace1, trace2];
 
-			//hacemos el heat map de la matriz de confusion
-			var colorscaleValue = [
-				[0, '#3D9970'],
-				[1, '#001f3f']
-			];
-			
-			console.log(xData);
+						var layout = {barmode: 'group'};
 
-			for (i=0; i<xData.length; i++){
-				
-				if (xData[i] == "Reduced stability "){
-					xData[i] = "Reduced";
-				}else{
-					xData[i] = "Increased";
-				}				
-			}
-			
-			console.log(xData);
-			var dataHeat = [
-				{
-					z: data.matrixConfusionResponse.matrix,
-					x: xData,
-					y: xData,
-					type: 'heatmap',
-					colorscale: colorscaleValue
-				}
-			];
+						Plotly.newPlot('fiabilidad', dataLa, layout);
 
-			var layout = {
+						//hacemos el heat map de la matriz de confusion
+						var colorscaleValue = [
+							[0, '#3D9970'],
+							[1, '#001f3f']
+						];
+						var dataHeat = [
+							{
+								z: data.matrixConfusionResponse.matrix,
+								x: xData,
+								y: xData,
+								type: 'heatmap',
+								colorscale: colorscaleValue
+							}
+						];
 
-				annotations: [],
-				
-				font: {
-					size: 18
-				}
+						var layout = {
 
-			};
+							annotations: [],
+							xaxis: {
+								title: 'Prediction Values',
+							}
 
-			for ( var i = 0; i < xData.length; i++ ) {
-				for ( var j = 0; j < xData.length; j++ ) {
-					var currentValue = data.matrixConfusionResponse.matrix[i][j];
-					if (currentValue != 0.0) {
-						var textColor = 'white';
-					}else{
-						var textColor = 'black';
-					}
-					var result = {
-						xref: 'x1',
-						yref: 'y1',
-						x: xData[j],
-						y: xData[i],
-						text: data.matrixConfusionResponse.matrix[i][j],
-						font: {
-							family: 'Arial',
-							size: 16,
-							color: 'rgb(50, 171, 96)'
-						},
-						showarrow: false,
-						font: {
-							color: textColor
+						};
+
+						for ( var i = 0; i < xData.length; i++ ) {
+							for ( var j = 0; j < xData.length; j++ ) {
+								var currentValue = data.matrixConfusionResponse.matrix[i][j];
+								if (currentValue != 0.0) {
+									var textColor = 'white';
+								}else{
+									var textColor = 'black';
+								}
+								var result = {
+									xref: 'x1',
+									yref: 'y1',
+									x: xData[j],
+									y: xData[i],
+									text: data.matrixConfusionResponse.matrix[i][j],
+									font: {
+										family: 'Arial',
+										size: 16,
+										color: 'rgb(50, 171, 96)'
+									},
+									showarrow: false,
+									font: {
+										color: textColor
+									}
+								};
+								layout.annotations.push(result);
+							}
 						}
-					};
-					layout.annotations.push(result);
-				}
-			}
 
-			Plotly.newPlot('confusionMatrixGraph', dataHeat, layout);
+						Plotly.newPlot('confusionMatrixGraph', dataHeat, layout);
 		});
 	});
 }
@@ -161,103 +193,6 @@ function showDefinitionData(){
 	});
 
 }
-/*
-//funcion para cargar las performance y summary process
-function loadTables(){
-	var job = getQuerystring('job');
-	$.ajax({
-		method: "POST",
-		url: "../php/requestValues.php"
-	}).done( function( info ){
-		var response = JSON.parse(info);
-		var nameFile = "../../../dataStorage/"+response.request"/"+job+"/responseTraining"+job+".json";
-		readTextFile(nameFile, function(text){
-			var data = JSON.parse(text);
-			var params_values = JSON.stringify(data.Params).replace(new RegExp("{", 'g'), "");
-			var params_values = params_values.replace(new RegExp("}", 'g'), "");
-			var params_values = params_values.replace(new RegExp("\"", 'g'), "");
-			var params_values = params_values.replace(new RegExp(",", 'g'), " ");
-			console.log(params_values);
-			$(".precision").html(parseFloat(data.Performance.precision).toFixed(4)*100+"%");
-			$(".accuracy").html(parseFloat(data.Performance.accuracy).toFixed(4)*100+"%");
-			$(".recall").html(parseFloat(data.Performance.recall).toFixed(4)*100+"%");
-			$(".f1_score").html(parseFloat(data.Performance.f1).toFixed(4)*100);
-			$(".fbeta").html(parseFloat(data.Performance.fbeta).toFixed(4)*100);
-			$(".negloss").html(parseFloat(data.Performance.neg_log_loss).toFixed(2));
-			//creamos el text para los params...
-			$(".algorithm").html(data.algorithm);
-			$(".params_values").html(params_values);
-			$(".validation").html(data.Validation);
-			$(".transform").html(JSON.stringify(data.classTransform));
-			//hacemos el grafico de fiabilidad y bakanosidad
-			var xData = data.matrixConfusionResponse.header;
-			var trace1 = {
-			  x: xData,
-			  y: data.matrixConfusionResponse.fiabilidad,
-			  name: 'Reliability',
-			  type: 'bar'
-			};
-			var trace2 = {
-			  x: xData,
-			  y: data.matrixConfusionResponse.bakanosidad,
-			  name: 'Bakanosidad',
-			  type: 'bar'
-			};
-			var dataLa = [trace1, trace2];
-			var layout = {barmode: 'group'};
-			Plotly.newPlot('fiabilidad', dataLa, layout);
-			//hacemos el heat map de la matriz de confusion
-			var colorscaleValue = [
-			  [0, '#3D9970'],
-			  [1, '#001f3f']
-			];
-			var dataHeat = [
-				{
-		    	z: data.matrixConfusionResponse.matrix,
-		    	x: xData,
-		    	y: xData,
-		    	type: 'heatmap',
-					colorscale: colorscaleValue
-	  		}
-			];
-			var layout = {
-			  annotations: [],
-			  xaxis: {
-			    title: 'Prediction Values',
-			  }
-			};
-			for ( var i = 0; i < xData.length; i++ ) {
-			  for ( var j = 0; j < xData.length; j++ ) {
-			    var currentValue = data.matrixConfusionResponse.matrix[i][j];
-			    if (currentValue != 0.0) {
-			      var textColor = 'white';
-			    }else{
-			      var textColor = 'black';
-			    }
-			    var result = {
-			      xref: 'x1',
-			      yref: 'y1',
-			      x: xData[j],
-			      y: xData[i],
-			      text: data.matrixConfusionResponse.matrix[i][j],
-			      font: {
-			        family: 'Arial',
-			        size: 16,
-			        color: 'rgb(50, 171, 96)'
-			      },
-			      showarrow: false,
-			      font: {
-			        color: textColor
-			      }
-			    };
-			    layout.annotations.push(result);
-			  }
-			}
-			Plotly.newPlot('confusionMatrixGraph', dataHeat, layout);
-		});
-	});
-}
-*/
 
 //funcion para cargar la definicion del algoritmo
 function loadInfoAlgorithm(){
@@ -295,4 +230,3 @@ function readTextFile(file, callback) {
     }
     rawFile.send(null);
 }
-
