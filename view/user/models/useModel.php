@@ -37,9 +37,13 @@
     <!--Nifty Premium Icon [ DEMONSTRATION ]-->
     <link href="../css/demo/nifty-demo-icons.min.css" rel="stylesheet">
 
-    <!--Demo [ DEMONSTRATION ]-->
-    <link href="../css/demo/nifty-demo.min.css" rel="stylesheet">
 
+    <!--DataTables [ OPTIONAL ]-->
+    <link href="../plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="../plugins/datatables/extensions/Responsive/css/responsive.dataTables.min.css" rel="stylesheet">
+
+    <!--Bootstrap Validator [ OPTIONAL ]-->
+    <link href="../plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
     <!--JAVASCRIPT-->
     <!--=================================================-->
 
@@ -59,11 +63,12 @@
     <!--NiftyJS [ RECOMMENDED ]-->
     <script src="../js/nifty.min.js"></script>
 
+    <!--Dropzone [ OPTIONAL ]-->
+    <script src="../plugins/dropzone/dropzone.min.js"></script>
+    <link href="../plugins/dropzone/dropzone.min.css" rel="stylesheet">
+    <script src="../js/formatDropzone.js"></script>
 
     <!--=================================================-->
-
-    <!--Demo script [ DEMONSTRATION ]-->
-    <script src="../js/demo/nifty-demo.min.js"></script>
 
     <!--Font Awesome [ OPTIONAL ]-->
     <link href="../plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -75,17 +80,12 @@
     <link href="../plugins/themify-icons/themify-icons.min.css" rel="stylesheet">
     <!--Premium Line Icons [ OPTIONAL ]-->
     <link href="../premium/icon-sets/icons/line-icons/premium-line-icons.min.css" rel="stylesheet">
-    <link href="../plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
-
-    <!--Dropzone [ OPTIONAL ]-->
-    <script src="../plugins/dropzone/dropzone.min.js"></script>
-    <link href="../plugins/dropzone/dropzone.min.css" rel="stylesheet">
-    <script src="../js/formatDropzone.js"></script>
+    <link href="../plugins/spinkit/css/spinkit.min.css" rel="stylesheet">
     <script src="../plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 
     <!-- script para la carga de datos -->
-    <script src="../js/prediction/responseJob.js"></script>
+    <script src="../js/models/processJob.js"></script>
 
 </head>
 
@@ -180,12 +180,7 @@
                     <!--Page Title-->
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <div id="page-title">
-                        <h1 class="page-header text-overflow">
-                          <?php
-                            $job = $_GET['job'];
-                            echo "Result Process for job $job";
-                          ?>
-                        </h1>
+                        <h1 class="page-header text-overflow">Try Model Process</h1>
 
                     </div>
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -197,164 +192,106 @@
                 <!--===================================================-->
               <div id="page-content">
                 <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12">
+                  <div class="col-sm-12 col-md-12">
+
                     <div class="panel panel-bordered panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Summary Process</h3>
+
+                      <div class="panel-heading">
+                        <h3 class="panel-title">
+                          Complete the form
+                        </h3>
+                      </div>
+                      <div class="panel-body">
+                        <form id="frmAgregarFile" action="../php/uploadFileTryModels.php" class="dropzone" >
+                          <div class="dz-default dz-message">
+                            <div class="dz-icon">
+                              <i class="demo-pli-upload-to-cloud icon-5x"></i>
+                            </div>
+                            <div>
+                              <span class="dz-text">Drop files to upload</span>
+                              <p class="text-sm text-muted">or click to pick manually</p>
+                            </div>
+                          </div>
+                          <div class="fallback">
+                            <input name="file" type="file" multiple>
+                          </div>
+                        </form>
+
+                        <hr>
+
+                        <form id="initNewJob" method="post" class="form-horizontal form-label-left">
+
+                          <div class="ln_solid"></div>
+
+                          <div class="form-group">
+                              <div class="col-sm-5 col-sm-offset-3">
+                                <button type="button" id="processJob" class="btn btn-primary">Try model</button>
+                              </div>
+                          </div>
+                        </form>
+                        <div class="col-sm-12 col-md-12 col-lg-12" id="loading" style="display:none;">
+                            <div class="panel">
+                                <div class="panel-body">
+                                    <div class="sk-three-bounce">
+                                        <div class="sk-child sk-bounce1"></div>
+                                        <div class="sk-child sk-bounce2"></div>
+                                        <div class="sk-child sk-bounce3"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="panel-body">
-                          <table class="table table-hover table-vcenter">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <span class="text-main text-semibold">Algorithm</span>
-                              </td>
-                              <td>
-                                <span class="text-main text-semibold algorithm"></span>
-                                <br>
-                              </td>
-                             </tr>
 
-                              <tr>
-                                  <td>
-                                    <span class="text-main text-semibold">Params</span>
-                                  </td>
-                                  <td>
-                                      <span class="text-main text-semibold params_values"></span>
-                                      <br>
-                                  </td>
-                              </tr>
-
-                              <tr>
-                                  <td>
-                                    <span class="text-main text-semibold">R Score</span>
-                                  </td>
-                                  <td>
-                                      <span class="text-main r_score"></span>
-                                      <br>
-                                  </td>
-                              </tr>
-
-                              <tr>
-                                  <td>
-                                    <span class="text-main text-semibold">Pearson coefficient</span>
-                                  </td>
-                                  <td>
-                                      <span class="text-main pearson"></span>
-                                      <br>
-                                  </td>
-                              </tr>
-
-                              <tr>
-                                  <td>
-                                    <span class="text-main text-semibold">Spearman Rank</span>
-                                  </td>
-                                  <td>
-                                      <span class="text-main spearman"></span>
-                                      <br>
-                                  </td>
-                              </tr>
-
-                              <tr>
-                                  <td>
-                                    <span class="text-main text-semibold">Kendall Tau</span>
-                                  </td>
-                                  <td>
-                                      <span class="text-main kendalltau"></span>
-                                      <br>
-                                  </td>
-                              </tr>
-
-                              <tr>
-                                  <td>
-                                    <span class="text-main text-semibold">Interpret Results</span>
-                                  </td>
-                                  <td>
-                                      <span class="text-semibold">
-                                        All performance measures to validate the training results of the models are based on the relationship between the actual data with respect to the values of predictions delivered by the model. As long as the values are closer to 1 it indicates a better performance for the model. The p-value associated with each measure indicates the significance with which the result is evaluated.
-                                      </span>
-                                      <br>
-                                  </td>
-                              </tr>
-
-                          </tbody>
-                      </table>
+                        <div class="col-sm-12 col-md-12 col-lg-12" id="errorResponse" style="display:none;">
+                          <div class="alert alert-danger" role="alert">
+                            Error during the execution of the process. Please, review the data set. In case of persisting, contact the system administrator.
+                          </div>
                         </div>
-                    </div>
-                  </div>
-                </div>
 
-								<div class="row">
-									<div class="col-lg-12 col-md-12 col-sm-12">
-										<div class="panel panel-bordered panel-primary">
-												<div class="panel-heading">
-														<h3 class="panel-title">Export Model</h3>
-												</div>
-												<div class="panel-body">
+												<div class="col-sm-12 col-md-12 col-lg-12" id="viewResponse" style="display:none;">
+													<div class="panel panel-bordered panel-primary">
+															<div class="panel-heading">
+																	<h3 class="panel-title">Description Process</h3>
+															</div>
+															<div class="panel-body">
 
-													<p>
-														It is possible export the created model, using joblib library. The mainly advantages to export model are to classifier new examples and using the model. Is important remember that, when you use a model, the new examples must have the sames features, in case that it is not, the model will not to work.
-													</p>
+																<table class="table table-hover table-vcenter">
+																<tbody>
+																	<tr>
+																		<td>
+																			<span class="text-main text-semibold">Process</span>
+																		</td>
+																		<td>
+																			<span class="text-main text-semibold">Try Model</span>
+																			<br>
+																		</td>
+																	 </tr>
 
-													<div class="form-group">
-															<div class="col-sm-5">
-																<button type="button" id="export" class="btn btn-primary">Export Model</button>
+																		<tr>
+																				<td>
+																					<span class="text-main text-semibold">File Response</span>
+																				</td>
+																				<td>
+																						<span class="text-main text-semibold">
+																							<?php
+
+																								$job=$_GET['model'];
+																								$idUser = $_SESSION['idUser'];
+																								echo "<a href=\"../../../dataStorage/$idUser/$job/responseModel.csv\">";
+																								echo "dataResponse</a>";
+
+																							?>
+																						</span>
+																						<br>
+																				</td>
+																		</tr>
+																</tbody>
+															</table>
 															</div>
 													</div>
-
-													<p class="responseExportModel"></p>
-
-												</div>
-										</div>
-									</div>
-								</div>
-								
-                <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="panel panel-bordered panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">
-                              Prediction v/s Real values
-                            </h3>
                         </div>
-                        <div class="panel-body">
-                          <div id="predictionData">
-                          </div>
-                        </div>
+                      </div>
                     </div>
                   </div>
-
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="panel panel-bordered panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">
-                              Error graphic values: Real values - Predict Values
-                            </h3>
-                        </div>
-                        <div class="panel-body">
-                          <div id="errorGraphic">
-                          </div>
-                        </div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-12 col-md-12 col-sm-12">
-                    <div class="panel panel-bordered panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title algorithmName"></h3>
-                        </div>
-                        <div class="panel-body">
-                          <p class="explanation"></p>
-                        </div>
-                    </div>
-                  </div>
-
                 </div>
               </div>
             </div>

@@ -92,15 +92,7 @@
 	  <script src="../plugins/datatables/media/js/dataTables.bootstrap.js"></script>
 	  <script src="../plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js"></script>
 
-
-    <!-- para los higcharts-->
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/series-label.js"></script>
-
-    <script src="../js/jobs/loadJobsByStage.js"></script>
-    <script src="../js/jobs/loadJobsStageByDate.js"></script>
-    <script src="../js/jobs/loadTable.js"></script>
+    <script src="../js/models/loadTable.js"></script>
 
 </head>
 
@@ -195,7 +187,7 @@
                     <!--Page Title-->
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
                     <div id="page-title">
-                        <h1 class="page-header text-overflow">My Jobs Exec</h1>
+                        <h1 class="page-header text-overflow">My models</h1>
 
                     </div>
                     <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -206,62 +198,24 @@
                 <!--Page content-->
                 <!--===================================================-->
               <div id="page-content">
-                <div class="row">
-                  <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="panel panel-bordered panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">Jobs by Status</h3>
-                        </div>
-                        <div class="panel-body">
-                          <p class="jobsKindAlert"></p>
-                          <div id="jobsKind"></div>
-                        </div>
-                    </div>
-                  </div>
-
-                  <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="panel panel-bordered panel-primary">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">User tool</h3>
-                        </div>
-                        <div class="panel-body">
-                          <p class="jobsDateAlert"></p>
-                          <div id="jobsDate"></div>
-                        </div>
-                    </div>
-                  </div>
-                </div>
 
                 <div class="row">
 
-                  <div class="col-sm-12 col-md-12 col-lg-12" id="STATISTICAL-ANALYSIS" style="display:none;">
-                    <div class="alert alert-warning" role="alert">
-                      It is not possible to visualize this option from this item. Please access the statistical analysis module to execute the corresponding action.
-                    </div>
-                  </div>
-
-                  <div class="col-sm-12 col-md-12 col-lg-12" id="errorResponse" style="display:none;">
-                    <div class="alert alert-danger" role="alert">
-                      Jobs with error during execute.
-                    </div>
-                  </div>
                   <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="panel panel-bordered panel-primary">
                         <div class="panel-heading">
-                            <h3 class="panel-title">Details Jobs</h3>
+                            <h3 class="panel-title">Details Models</h3>
                         </div>
                         <div class="panel-body">
                           <p class="mensaje"></p>
                           <table id="jobs" class="table table-striped table-bordered" cellspacing="0" width="100%">
                               <thead>
                                 <tr>
+                                  <th class="min-tablet">Modelo</th>
                                   <th class="min-tablet">Job</th>
-                                  <th class="min-tablet">Name</th>
-                                  <th class="min-tablet">Description</th>
-                                  <th class="min-tablet">Kind</th>
-                                  <th class="min-tablet">Status</th>
-                                  <th class="min-tablet">Created</th>
-                                  <th class="min-tablet">Modified</th>
+                                  <th class="min-tablet">Tipo Modelo</th>
+                                  <th class="min-tablet">Name Data Set</th>
+																	<th class="min-tablet">Created</th>
                                   <th class="min-tablet">Options</th>
                                 </tr>
                               </thead>
@@ -354,7 +308,7 @@
           						                </a>
 
           						            </li>
-																	
+
 																	<li class="list-header">Process Options</li>
 
                                   <li>
@@ -496,12 +450,12 @@
    					<div class="modal-content">
    						<div class="modal-header">
    							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-   							<h4 class="modal-title" id="myModalLabelEdit">Drop job</h4>
+   							<h4 class="modal-title" id="myModalLabelEdit">Delete model</h4>
    						</div>
    						<div class="modal-body">
 
                 <p>
-                   Are you sure you want to delete the selected job?
+                   Are you sure you want to delete the selected model?
                 </p>
 
 

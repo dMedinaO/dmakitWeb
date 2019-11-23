@@ -2,9 +2,51 @@ $(document).ready(function() {
 
 	loadInfoAlgorithm();
 	loadTables();
+	savemodel();
 
 });
 
+function savemodel(){
+
+	$("#export").on("click", function(){
+
+			var idjob = getQuerystring('job');
+
+			$.ajax({
+				method: "POST",
+				url: "../php/classifier/exportModel.php",
+				data: {
+						"idjob"   : idjob
+					}
+
+			}).done( function( info ){
+
+				var json_info = JSON.parse( info );
+				console.log(json_info);
+				mostrar_mensaje( json_info );
+				//location.reload(true);
+			});
+
+	});
+}
+
+var mostrar_mensaje = function( informacion ){
+
+	var texto = "", color = "";
+	if( informacion.response == "BIEN" ){
+		texto = "<strong>Ok!</strong> Model saved successful!.";
+		color = "#379911";
+	}else{
+		texto = "<strong>Error</strong>, Error during save job.";
+		color = "#C9302C";
+	}
+
+	$(".responseExportModel").html( texto ).css({"color": color });
+	$(".responseExportModel").fadeOut(5000, function(){
+		$(this).html("");
+		$(this).fadeIn(3000);
+	});
+}
 
 //funcion para cargar las performance y summary process
 function loadTables(){
@@ -101,7 +143,7 @@ function createGraphicDataOnlyTrace(values, xValues){
       size: 12
     }
 
-		
+
 	};
 
 	var data = [trace2];

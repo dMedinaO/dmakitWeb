@@ -11,7 +11,7 @@
   $idModel = time();
 
   #hacemos la consulta para insertar el modelo
-  $query = "insert into modelo values ($idjob, $idModel, NOW(), NOW())";
+  $query = "insert into modelo values ($idModel, $idjob, NOW(), NOW())";
   $resultado = mysqli_query($conexion, $query);
 
   $response['response'] = verificar_resultado($resultado);
