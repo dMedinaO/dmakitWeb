@@ -1,0 +1,1 @@
+{"classTransform": {"C_1": 0, "C_3": 1, "C_2": 2}, "Params": {"splitter": "best", "criterion": "gini"}, "algorithm": "DecisionTree", "errorExec": {"exec_algorithm": "ERROR", "confusionMatrix": "error", "curveLearning": "error"}, "Validation": "Cross Validation: 10", "scale_options": 1}

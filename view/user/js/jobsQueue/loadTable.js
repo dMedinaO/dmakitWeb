@@ -76,8 +76,11 @@ var getIDForDetail = function(tbody, table){
 		if (statusJob == "FINISH"){
 			if (tipo == "queue-CLASSIFICATION"){
 				location.href="viewResponseClass.php?job="+idjob;
-			}else{
+			}else if (tipo == "queue-PREDICTION") {
+
 				location.href="viewResponsePrediction.php?job="+idjob;
+			}else{
+				location.href="responseJob.php?job="+idjob;
 			}
 		}
 

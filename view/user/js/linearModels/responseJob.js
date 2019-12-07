@@ -88,20 +88,21 @@ function createGraphicData(valuesReal, valuesPredict, xValues){
 //funcion para cargar el grafico
 function createGraphicDataOnlyTrace(values, xValues){
 
+	//formamos la trace...
 	var trace2 = {
-		x: xValues,
-		  y: values,
-		  mode: 'markers',
-		name: 'Error Values',
-		line: {
-		      line: {shape: 'spline'}
-    		},
+		x: values,
+		name: 'control',
+		autobinx: true,
+		histnorm: "count",
 		marker: {
-      color: 'rgb(219, 64, 82)',
-      size: 12
-    }
+			color: "rgba(128, 0, 0, 1)",
+			 line: {
+				color:  "rgba(128, 0, 0, 1)",
+				width: 1
+			}
+		},
 
-
+		type: "histogram"
 	};
 
 	var data = [trace2];

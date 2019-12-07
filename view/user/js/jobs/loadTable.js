@@ -109,6 +109,8 @@ var getIDForDetail = function(tbody, table){
 			//opciones relacionadas con prediccion
 			else if (tipo == "PREDICTION") {
 				location.href="../prediction/selectedFeature.php?job="+idjob+"&scale=1";
+			}else if ("LINEAR-MODELS") {
+				location.href="../linearModels/selectedFeature.php?job="+idjob+"&scale=1";
 			}else{
 				$('#STATISTICAL-ANALYSIS').show();
 				setTimeout("location.href=''", 3000);

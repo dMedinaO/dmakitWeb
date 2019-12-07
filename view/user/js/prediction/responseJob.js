@@ -130,6 +130,23 @@ function createGraphicData(valuesReal, valuesPredict, xValues){
 //funcion para cargar el grafico
 function createGraphicDataOnlyTrace(values, xValues){
 
+	//formamos la trace...
+	var trace2 = {
+		x: values,
+		name: 'control',
+		autobinx: true,
+		histnorm: "count",
+		marker: {
+			color: "rgba(128, 0, 0, 1)",
+			 line: {
+				color:  "rgba(128, 0, 0, 1)",
+				width: 1
+			}
+		},
+
+		type: "histogram"
+	};
+/*
 	var trace2 = {
 		x: xValues,
 		  y: values,
@@ -145,7 +162,7 @@ function createGraphicDataOnlyTrace(values, xValues){
 
 
 	};
-
+*/
 	var data = [trace2];
 
 	Plotly.newPlot('errorGraphic', data);

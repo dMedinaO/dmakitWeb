@@ -131,23 +131,23 @@ for bootstrap in [True, False]:
 #DecisionTree
 for criterion in ['mse', 'friedman_mse', 'mae']:
     for splitter in ['best', 'random']:
-        #try:
-        print "Excec DecisionTree with %s - %s" % (criterion, splitter)
-        decisionTreeObject = DecisionTree.DecisionTree(data, target, criterion, splitter)
-        decisionTreeObject.trainingMethod()
+        try:
+            print "Excec DecisionTree with %s - %s" % (criterion, splitter)
+            decisionTreeObject = DecisionTree.DecisionTree(data, target, criterion, splitter)
+            decisionTreeObject.trainingMethod()
 
-        performanceValues = performanceData.performancePrediction(target, decisionTreeObject.predicctions.tolist())
-        pearsonValue = performanceValues.calculatedPearson()['pearsonr']
-        spearmanValue = performanceValues.calculatedSpearman()['spearmanr']
-        kendalltauValue = performanceValues.calculatekendalltau()['kendalltau']
+            performanceValues = performanceData.performancePrediction(target, decisionTreeObject.predicctions.tolist())
+            pearsonValue = performanceValues.calculatedPearson()['pearsonr']
+            spearmanValue = performanceValues.calculatedSpearman()['spearmanr']
+            kendalltauValue = performanceValues.calculatekendalltau()['kendalltau']
 
-        params = "criterion:%s-splitter:%s" % (criterion, splitter)
-        row = ["DecisionTree", params, decisionTreeObject.r_score, pearsonValue, spearmanValue, kendalltauValue]
-        matrixResponse.append(row)
-        iteracionesCorrectas+=1
-        #except:
-        #    iteracionesIncorrectas+=1
-        #    pass
+            params = "criterion:%s-splitter:%s" % (criterion, splitter)
+            row = ["DecisionTree", params, decisionTreeObject.r_score, pearsonValue, spearmanValue, kendalltauValue]
+            matrixResponse.append(row)
+            iteracionesCorrectas+=1
+        except:
+            iteracionesIncorrectas+=1
+            pass
 
 #gradiente
 for loss in ['ls', 'lad', 'huber', 'quantile']:

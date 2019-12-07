@@ -9,7 +9,7 @@ $user = $_SESSION['idUser'];
   */
   $job = $_REQUEST['job'];
 
-  $nameDocument = "/var/www/html/smartTraining/dataStorage/$user/$job/statisticPerformance_$job.csv";
+  $nameDocument = "/var/www/html/dmakitWeb/dataStorage/$user/$job/statisticPerformance_$job.csv";
   $row = 0;
 
   $matrixResponse = [];

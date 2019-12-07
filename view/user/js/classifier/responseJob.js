@@ -100,20 +100,31 @@ function loadImagenes(){
 						var trace1 = {
 							x: xData,
 							y: data.matrixConfusionResponse.fiabilidad,
-							name: 'Reliability',
+							name: 'Specificity',
 							type: 'bar'
 						};
 
 						var trace2 = {
 							x: xData,
 							y: data.matrixConfusionResponse.bakanosidad,
-							name: 'Bakanosidad',
+							name: 'Sensitivity',
 							type: 'bar'
 						};
 
 						var dataLa = [trace1, trace2];
 
-						var layout = {barmode: 'group'};
+						var layout = {
+							barmode: 'group',
+
+							yaxis:{
+								title:'Values in %'
+							},
+
+							xaxis:{
+								title:'Class in dataset'
+							}
+
+						};
 
 						Plotly.newPlot('fiabilidad', dataLa, layout);
 

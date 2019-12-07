@@ -1,0 +1,1 @@
+{"classTransform": {"C_1": 0, "C_3": 1, "C_2": 2}, "Params": {"n_estimators": 10, "bootstrap": "True"}, "algorithm": "BaggingClassifier", "errorExec": {"exec_algorithm": "ERROR", "confusionMatrix": "error", "curveLearning": "error"}, "Validation": "Cross Validation: 10", "scale_options": 2}

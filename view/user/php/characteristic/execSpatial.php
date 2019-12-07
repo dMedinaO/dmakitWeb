@@ -35,7 +35,7 @@
   $nameFile = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$job/$nameData";
   $pathRespone = "/var/www/html/dmakitWeb/dataStorage/";
 
-  $command = "python /var/www/html/dmakitWeb/model/launcherWebFeatureAnalysis.py $idUSer $job $nameFile $pathRespone 2 $optionScale $feature $kind";
+  $command = "python /var/www/html/dmakitWeb/model/launcherWebFeatureAnalysis.py $idUSer $job $nameFile $pathRespone 2 1 1 $feature $kind";
   exec($command);
   $responseFile = "../../../dataStorage/$idUSer/$job/responseCorrelation$job.json";
   $responseData = file_exists("/var/www/html/dmakitWeb/dataStorage/$idUSer/$job/responseCorrelation$job.json");
@@ -46,7 +46,7 @@
   }else{
     $response['exec'] = "ERROR";
 
-    $query = "update job set job.statusJob = 'ERROR', job.modifiedJob = NOW() where job.idjob = $idJob";
+    $query = "update job set job.statusJob = 'ERROR', job.modifiedJob = NOW() where job.idjob = $job";
     $resultado = mysqli_query($conexion, $query);
   }
 

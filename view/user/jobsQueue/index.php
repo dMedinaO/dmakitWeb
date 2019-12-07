@@ -384,7 +384,7 @@
           						                </a>
 
           						            </li>
-																	
+
 																	<li class="list-header">Process Options</li>
 
                                   <li>
@@ -607,6 +607,7 @@
                 <select id="option" class="form-control">
                   <option value="1">CLASSIFICATION</option>
                   <option value="2">PREDICTION</option>
+									<option value="3">CLUSTERING</option>
                 </select>
               </div>
             </div>

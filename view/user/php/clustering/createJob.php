@@ -46,7 +46,6 @@
     }
 
     #movemos el archivo...
-    //movemos el archivo al path de la licitacion...
     $pathActual = "/var/www/html/smartTraining/dataStorage/tmp/clustering/$nameDocument";
     $pathMove = "/var/www/html/smartTraining/dataStorage/$idUSer/$idJob/";
 

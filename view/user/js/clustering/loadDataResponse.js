@@ -40,8 +40,7 @@ var listarDBScan = function(){
         {"data":"params"},
         {"data":"groups"},
         {"data":"calinski_harabaz_score"},
-        {"data":"silhouette_score"},
-				{"defaultContent":"<button type='button' class='detail btn btn-success'><i class='fa fa-list'></i></button>"}
+        {"data":"silhouette_score"}
       ]
   });
   $('#demo-custom-toolbar2').appendTo($("div.newtoolbar"));
@@ -70,8 +69,7 @@ var listarMeanShift = function(){
         {"data":"params"},
         {"data":"groups"},
         {"data":"calinski_harabaz_score"},
-        {"data":"silhouette_score"},
-				{"defaultContent":"<button type='button' class='detail btn btn-success'><i class='fa fa-list'></i></button>"}
+        {"data":"silhouette_score"}
       ]
   });
   $('#demo-custom-toolbar2').appendTo($("div.newtoolbar"));
@@ -100,8 +98,7 @@ var listarAffinity = function(){
         {"data":"params"},
         {"data":"groups"},
         {"data":"calinski_harabaz_score"},
-        {"data":"silhouette_score"},
-				{"defaultContent":"<button type='button' class='detail btn btn-success'><i class='fa fa-list'></i></button>"}
+        {"data":"silhouette_score"}
       ]
   });
   $('#demo-custom-toolbar2').appendTo($("div.newtoolbar"));
@@ -130,8 +127,7 @@ var listarKMeans = function(){
         {"data":"params"},
         {"data":"groups"},
         {"data":"calinski_harabaz_score"},
-        {"data":"silhouette_score"},
-				{"defaultContent":"<button type='button' class='detail btn btn-success'><i class='fa fa-list'></i></button>"}
+        {"data":"silhouette_score"}
       ]
   });
   $('#demo-custom-toolbar2').appendTo($("div.newtoolbar"));
@@ -160,8 +156,7 @@ var listarBirch = function(){
         {"data":"params"},
         {"data":"groups"},
         {"data":"calinski_harabaz_score"},
-        {"data":"silhouette_score"},
-				{"defaultContent":"<button type='button' class='detail btn btn-success'><i class='fa fa-list'></i></button>"}
+        {"data":"silhouette_score"}
       ]
   });
   $('#demo-custom-toolbar2').appendTo($("div.newtoolbar"));
@@ -190,8 +185,7 @@ var listarAgglomerative = function(){
         {"data":"params"},
         {"data":"groups"},
         {"data":"calinski_harabaz_score"},
-        {"data":"silhouette_score"},
-				{"defaultContent":"<button type='button' class='detail btn btn-success'><i class='fa fa-list'></i></button>"}
+        {"data":"silhouette_score"}
       ]
   });
   $('#demo-custom-toolbar2').appendTo($("div.newtoolbar"));

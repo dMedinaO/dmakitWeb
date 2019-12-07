@@ -30,8 +30,8 @@ if option == 1:#correlation matrix
     dictResponse.update({"Response": response})
 
 elif option == 2:#deformacion espacio
-    feature = sys.argv[7]
-    kindDataSet = sys.argv[8]
+    feature = sys.argv[8]
+    kindDataSet = sys.argv[9]
 
     dictResponse.update({'Exce': "Spatial Deformation"})
     response = execFeatures.excecSpatialDeformation(feature, kindDataSet, optionNormalize)

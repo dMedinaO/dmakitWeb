@@ -10,7 +10,7 @@
   $job = $_REQUEST['job'];
   $algorithm = $_REQUEST['algorithm'];
 
-  $nameDocument = "/var/www/html/smartTraining/dataStorage/$user/$job/ResponseProcess_Job_Clustering.csv";
+  $nameDocument = "/var/www/html/dmakitWeb/dataStorage/$user/$job/ResponseProcess_Job_Clustering.csv";
   $row = 0;
 
   $matrixResponse = [];

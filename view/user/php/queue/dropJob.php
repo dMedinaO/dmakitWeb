@@ -18,7 +18,7 @@ $user = $_SESSION['idUser'];
 	$response['response'] = verificar_resultado($resultado);
 
 	#eliminamos el directorio
-	$command = "rm -rf /var/www/html/smartTraining/dataStorage/$user/$idjob";
+	$command = "rm -rf /var/www/html/dmakitWeb/dataStorage/$user/$idjob";
 	exec($command);
 
 	mysqli_close($conexion);

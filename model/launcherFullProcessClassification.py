@@ -131,6 +131,7 @@ try:
     row = ["BernoulliNB", params, "CV-10", bernoulliNB.performanceData.scoreData[3], bernoulliNB.performanceData.scoreData[4], bernoulliNB.performanceData.scoreData[5], bernoulliNB.performanceData.scoreData[6]]
     matrixResponse.append(row)
     iteracionesCorrectas+=1
+
 except:
     iteracionesIncorrectas+=1
     pass

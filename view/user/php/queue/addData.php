@@ -15,8 +15,14 @@ $idUSer = $_SESSION['idUser'];
 
   if($option == 1){
     $kind="queue-CLASSIFICATION";
-  }else{
+  }
+
+  if ($option == 2){
     $kind="queue-PREDICTION";
+  }
+
+  if ($option == 3){
+    $kind="queue-CLUSTERING";
   }
 
   #obtenemos los datos desde la sesion...
@@ -24,9 +30,9 @@ $idUSer = $_SESSION['idUser'];
   $idJob = time();#sera el id del job...
   $response ['job'] = $idJob;
 
-  $pathRespone = "/var/www/html/smartTraining/dataStorage/";
+  $pathRespone = "/var/www/html/dmakitWeb/dataStorage/";
   #obtenemos el nombre del archivo de entrada...
-  $pathData = "/var/www/html/smartTraining/dataStorage/tmp/queue/".$idUSer."_documentQueue.txt";
+  $pathData = "/var/www/html/dmakitWeb/dataStorage/tmp/queue/".$idUSer."_documentQueue.txt";
   $nameDocument = readDocument($pathData);
   $response ['nameFile'] = $nameDocument;
 
@@ -42,7 +48,7 @@ $idUSer = $_SESSION['idUser'];
   if ($requestData == "BIEN"){#movemos el archivo de tmp al path del usuario y ejecutamos el proceso solo si la opcion de algorithm es todos...
 
     #movemos el archivo... creamos directorio
-    $path = "/var/www/html/smartTraining/dataStorage/$idUSer/$idJob";
+    $path = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob";
 
     if (!file_exists($path)) {
         mkdir($path, 0777, true);
@@ -50,8 +56,8 @@ $idUSer = $_SESSION['idUser'];
 
     #movemos el archivo...
     //movemos el archivo al path de la licitacion...
-    $pathActual = "/var/www/html/smartTraining/dataStorage/tmp/queue/$nameDocument";
-    $pathMove = "/var/www/html/smartTraining/dataStorage/$idUSer/$idJob/";
+    $pathActual = "/var/www/html/dmakitWeb/dataStorage/tmp/queue/$nameDocument";
+    $pathMove = "/var/www/html/dmakitWeb/dataStorage/$idUSer/$idJob/";
 
     $command = "mv $pathActual $pathMove";
     exec($command);
