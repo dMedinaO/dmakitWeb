@@ -1,0 +1,1 @@
+{"silhouette_score": 0.21381346330835088, "membersGroup": {"Group1": 139, "Group0": 92, "Group3": 121, "Group2": 110}, "Params": {"Number K": "4"}, "calinski_harabaz_score": 211.2521462976423, "algorithm": "K Means", "responseExec": "OK", "figureClusters": "OK"}

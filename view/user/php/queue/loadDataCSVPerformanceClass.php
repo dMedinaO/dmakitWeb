@@ -13,7 +13,7 @@ $user = $_SESSION['idUser'];
   $row = 0;
 
   $matrixResponse = [];
-  $header = ['Algorithm', 'Params', 'Accuracy', 'Recall',	'Precision', 'F1Score'];
+  $header = ['Algorithm', 'Params', 'Accuracy', 'Recall', 'Precision', 'F1Score'];
   $dataAdd = 0;
 
   if (($handle = fopen($nameDocument, "r")) !== FALSE) {
@@ -22,8 +22,9 @@ $user = $_SESSION['idUser'];
       $num = count($data);
       if ($row != 0){
         for ($c=0; $c < $num; $c++) {
-
+	    	
             $rowData[$header[$c]] = $data[$c];
+	    
         }
         $matrixResponse[$dataAdd] = $rowData;
         $dataAdd++;
