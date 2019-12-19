@@ -273,7 +273,9 @@
 																<tr>
 																	<th class="min-tablet">Algorithm</th>
 																	<th class="min-tablet">Params</th>
-																	<th class="min-tablet">Accuracy</th>
+<th class="min-tablet">Validation</th>
+																	
+<th class="min-tablet">Accuracy</th>
 																	<th class="min-tablet">Recall</th>
 																	<th class="min-tablet">Precision</th>
 																	<th class="min-tablet">F1 Score</th>

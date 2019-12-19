@@ -22,6 +22,7 @@ var listValuesPerformance = function(){
       "columns":[
         {"data":"Algorithm"},
         {"data":"Params"},
+        {"data":"Validation"},	
         {"data":"Accuracy"},
         {"data":"Recall"},
         {"data":"Precision"},

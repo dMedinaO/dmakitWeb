@@ -13,7 +13,7 @@ $user = $_SESSION['idUser'];
   $row = 0;
 
   $matrixResponse = [];
-  $header = ['Algorithm', 'Params', 'Accuracy', 'Recall', 'Precision', 'F1Score'];
+  $header = ['Algorithm', 'Params', 'Validation', 'Accuracy', 'Recall', 'Precision', 'F1Score'];
   $dataAdd = 0;
 
   if (($handle = fopen($nameDocument, "r")) !== FALSE) {
