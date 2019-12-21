@@ -222,14 +222,14 @@
                         <form id="initNewJob" method="post" class="form-horizontal form-label-left">
 
                           <div class="form-group">
-                             <label class="col-sm-3 control-label">Name Job*</label>
+                             <label class="col-sm-3 control-label">Job Name*</label>
                               <div class="col-sm-5">
                                   <input type="text" class="form-control" id="nameJob" name="nameJob" />
                               </div>
                           </div>
 
                           <div class="form-group">
-                             <label class="col-sm-3 control-label">Description Job*</label>
+                             <label class="col-sm-3 control-label">Job Description*</label>
                               <div class="col-sm-5">
                                   <input type="text" class="form-control" id="descJob" name="descJob" />
                               </div>

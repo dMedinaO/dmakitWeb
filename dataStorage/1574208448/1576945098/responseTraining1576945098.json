@@ -1,0 +1,1 @@
+{"errorExec": {"Process": "ERROR"}, "Params": {"splitter": "best", "criterion": "mse"}, "algorithm": "DecisionTreeRegressor"}
