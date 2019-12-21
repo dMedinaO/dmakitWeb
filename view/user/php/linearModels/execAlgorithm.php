@@ -38,7 +38,7 @@
 
 
   //hacemos la ejecucion del script
-  $command = "python /var/www/html/dmakitWeb/model/launcherSupervisedLinearModel.py $nameFile $idUSer $job $pathRespone 1 $params $responseFeature $scale";
+  $command = "python /var/www/html/dmakitWeb/model/launcherSupervisedLinearModel.py $nameFile $idUSer $job $pathRespone $algorithm $responseFeature $scale";
   $response['command'] = $command;
   exec($command);
 
